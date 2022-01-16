@@ -1,0 +1,34 @@
+# Variable 'welcomemessage' was defined in the Variables tab
+jobs:
+- job: Job_1
+  displayName: Job1
+  pool:
+    vmImage: windows-2019
+  steps:
+  - checkout: self
+  - task: PowerShell@2
+    displayName: Step1 Job
+    inputs:
+      targetType: inline
+      script: >
+        # Write your PowerShell commands here.
+
+
+        Write-Host "$(welcomemessage) Step1 Job"
+- job: Job_2
+  displayName: Job2
+  dependsOn: Job_1
+  pool:
+    vmImage: windows-2019
+  steps:
+  - checkout: self
+  - task: PowerShell@2
+    displayName: Step2 Job1
+    inputs:
+      targetType: inline
+      script: >
+        # Write your PowerShell commands here.
+
+
+        Write-Host "Incline script - Hello World"
+...
